@@ -1,0 +1,12 @@
+{
+  "name": "back-task1",
+  "version": "1.0.0",
+  "main": "graph.js",
+  "type": "module",
+  "scripts": {
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
