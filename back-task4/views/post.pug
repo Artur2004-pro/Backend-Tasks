@@ -1,0 +1,102 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title= post.title
+    style.
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+      .container {
+        max-width: 700px;
+        width: 100%;
+        background-color: #fff;
+        margin: 40px 0;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+      h1, h2 {
+        color: #333;
+      }
+      p {
+        color: #555;
+        line-height: 1.5;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        padding: 10px 12px;
+        margin-bottom: 8px;
+        border-radius: 6px;
+        background-color: #f9f9f9;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+      li:hover {
+        background-color: #e6f0ff;
+        transform: translateX(3px);
+      }
+      form {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      textarea, input {
+        padding: 8px 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-family: inherit;
+      }
+      button {
+        width: fit-content;
+        padding: 8px 20px;
+        border-radius: 6px;
+        border: none;
+        background-color: #1890ff;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+      button:hover {
+        background-color: #40a9ff;
+        transform: scale(1.05);
+      }
+      a.back {
+        display: inline-block;
+        margin-top: 20px;
+        color: #1890ff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+      a.back:hover {
+        color: #40a9ff;
+      }
+  body
+    .container
+      h1= post.title
+      p= post.text
+
+      h2 Comments
+      if post.comments && post.comments.length
+        ul
+          each comment in post.comments
+            li= comment
+      else
+        p No comments yet.
+
+      form(action=`/posts/${post.id}/comment`, method="POST")
+        label(for="comment") Add a comment:
+        textarea(name="comment", id="comment", rows="3")
+        br
+        button(type="submit") Submit Comment
+
+      a.back(href="/") Back to all posts

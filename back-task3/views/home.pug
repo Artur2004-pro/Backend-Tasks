@@ -1,0 +1,97 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title Users List
+    style.
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .container {
+        max-width: 700px;
+        width: 100%;
+        background-color: #fff;
+        margin: 40px 0;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 25px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 15px;
+        margin-bottom: 12px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        transition: background-color 0.3s ease;
+      }
+      li div {
+        display: flex;
+        flex-direction: row;
+        gap: 120px;
+      }
+      li:hover {
+        background-color: #e6f0ff;
+      }
+
+      li strong {
+        color: #555;
+      }
+
+      a {
+        text-decoration: none;
+        color: #ff4d4f;
+        font-weight: bold;
+        margin-left: 15px;
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: #d9363e;
+      }
+
+      .add-user {
+        display: block;
+        text-align: center;
+        margin-top: 25px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #1890ff;
+        padding: 10px 25px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+      }
+
+      .add-user:hover {
+        background-color: #40a9ff;
+      }
+  body
+    .container
+      h1 Users
+      ul
+        each user in users
+          li
+            div
+              strong= user.name
+              strong= user.surname
+            a(href=`/user/delete/${user.id}`) Delete
+      a.add-user(href="/") Add User
